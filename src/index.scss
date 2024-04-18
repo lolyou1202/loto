@@ -9,7 +9,9 @@
 	--yelow: #ffcd17;
 	--yelow-dark: #d1ab1f;
 	--green: #0fb25a;
+	--green-dark: #0e8846;
 	--red: #c63026;
+	--red-dark: #a9271f;
 	--radius-wide: 8px;
 	--radius-narrow: 4px;
 }
@@ -104,9 +106,27 @@
 			flex-shrink: 0;
 			font-size: 14px;
 			line-height: 16px;
+			& + div {
+				position: relative;
+			}
 		}
 		&-check {
+			position: absolute;
+			transform: translateY(-50%);
 			stroke: var(--yelow);
+			opacity: 0;
+			&.show {
+				opacity: 1;
+			}
+		}
+		&-cross {
+			position: absolute;
+			transform: translateY(-50%);
+			stroke: var(--red);
+			opacity: 0;
+			&.show {
+				opacity: 1;
+			}
 		}
 		&-progressBar {
 			position: relative;
@@ -152,7 +172,7 @@
 	&__functional {
 		display: flex;
 		gap: 12px;
-		&-rendom {
+		&-random {
 		}
 	}
 }
@@ -167,7 +187,7 @@
 	user-select: none;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
-	&.inactive {
+	&.default {
 		background: var(--secondary);
 		p {
 			color: var(--white);
@@ -179,7 +199,7 @@
 			background: var(--light);
 		}
 	}
-	&.active {
+	&.selected {
 		background: var(--yelow);
 		p {
 			color: var(--black);
@@ -190,5 +210,32 @@
 		&:hover {
 			background: var(--yelow-dark);
 		}
+	}
+	&.coincide {
+		background: var(--green);
+		p {
+			color: var(--white);
+		}
+		svg {
+			stroke: var(--white);
+		}
+		&:hover {
+			background: var(--green-dark);
+		}
+	}
+	&.miss {
+		background: var(--red);
+		p {
+			color: var(--white);
+		}
+		svg {
+			stroke: var(--white);
+		}
+		&:hover {
+			background: var(--red-dark);
+		}
+	}
+	p {
+		font-weight: 700;
 	}
 }

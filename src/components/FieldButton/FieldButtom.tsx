@@ -1,29 +1,26 @@
 import classNames from 'classnames'
-import { useState } from 'react'
 import { DefaultButton } from '../DefaultButton/DefaultButton'
+import { useAppDispatch } from '../../redux/hooks'
+import { setVariantCell } from '../../redux/slices/ticketSlice'
+import { CellVariant, FieldNum } from '../../types/types'
 
 export const FieldButtom = ({
-	variant = 'inactive',
-	content,
+	index,
+	variant = 'default',
 	className,
+	fieldNum = 'first',
 }: {
-	variant?: 'active' | 'inactive'
-	content: string | number
+	index: number
+	variant?: CellVariant
 	className?: string
+	fieldNum?: FieldNum
 }) => {
-	const [variantState, setVariantState] = useState(variant)
+	const dispatch = useAppDispatch()
 
-	const defaultButtonClass = classNames(variantState, className)
+	const defaultButtonClass = classNames(variant, className)
 
 	const handleClickButton = () => {
-		switch (variantState) {
-			case 'active':
-				setVariantState('inactive')
-				break
-			case 'inactive':
-				setVariantState('active')
-				break
-		}
+		dispatch(setVariantCell({ index: index - 1, fieldNum }))
 	}
 
 	return (
@@ -31,7 +28,7 @@ export const FieldButtom = ({
 			className={defaultButtonClass}
 			handleClickButton={handleClickButton}
 		>
-			<p>{content}</p>
+			<p>{index}</p>
 		</DefaultButton>
 	)
 }

@@ -14,10 +14,14 @@ function App() {
 				</p>
 				<Field
 					name='Поле 1'
-					withProgressBar
+					fieldNum='first'
 					fieldState={fieldState.first}
 				/>
-				<Field name='Поле 2' fieldState={fieldState.second} />
+				<Field
+					name='Поле 2'
+					fieldNum='second'
+					fieldState={fieldState.second}
+				/>
 			</div>
 			{/*<div className='ticket__functional'>
 				<div className='ticket__functional-random'></div>
