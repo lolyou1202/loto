@@ -4,7 +4,7 @@
 	--black: #0b0a12;
 	--dark: #28263a;
 	--secondary: #403f5c;
-	--light: #8a8aa8;
+	--light: #5c5c7c;
 	--white: #ffffff;
 	--yelow: #ffcd17;
 	--yelow-dark: #d1ab1f;
@@ -29,7 +29,7 @@
 	display: flex;
 	width: 100%;
 	height: 100vh;
-	padding: 16px;
+	padding: 12px;
 	background: var(--black);
 }
 
@@ -90,5 +90,105 @@
 	&-hint {
 		font-size: 14px;
 		line-height: 16px;
+	}
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		&-header {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		&-name {
+			flex-shrink: 0;
+			font-size: 14px;
+			line-height: 16px;
+		}
+		&-check {
+			stroke: var(--yelow);
+		}
+		&-progressBar {
+			position: relative;
+			display: flex;
+			width: 100%;
+			height: 8px;
+			background: var(--secondary);
+			border-radius: var(--radius-narrow);
+			overflow: hidden;
+			&-list {
+				position: relative;
+				z-index: 2;
+				display: flex;
+				width: 100%;
+			}
+			&-item {
+				width: 100%;
+				border-right: 2px solid var(--dark);
+				&:last-child {
+					border: none;
+				}
+			}
+			&-progress {
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				z-index: 1;
+				background: var(--yelow);
+				transition: width 0.2s ease-in-out;
+			}
+		}
+		&-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, 44px);
+			gap: 8px;
+			justify-content: space-between;
+			&.justifyStart {
+				justify-content: flex-start;
+			}
+		}
+	}
+	&__functional {
+		display: flex;
+		gap: 12px;
+		&-rendom {
+		}
+	}
+}
+.defaultButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border: none;
+	border-radius: var(--radius-narrow);
+	user-select: none;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	&.inactive {
+		background: var(--secondary);
+		p {
+			color: var(--white);
+		}
+		svg {
+			stroke: var(--white);
+		}
+		&:hover {
+			background: var(--light);
+		}
+	}
+	&.active {
+		background: var(--yelow);
+		p {
+			color: var(--black);
+		}
+		svg {
+			stroke: var(--black);
+		}
+		&:hover {
+			background: var(--yelow-dark);
+		}
 	}
 }
