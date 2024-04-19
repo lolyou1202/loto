@@ -44,3 +44,27 @@
 		}
 	}
 }
+
+@media (min-width: 500px) {
+	.ticket__header {
+		&-title {
+			gap: 12px;
+			&-text {
+				font-size: 28px;
+				line-height: 28px;
+			}
+			&-info {
+				svg {
+					width: 24px;
+					height: 24px;
+				}
+			}
+		}
+		&-cross {
+			svg {
+				width: 24px;
+				height: 24px;
+			}
+		}
+	}
+}

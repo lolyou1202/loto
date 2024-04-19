@@ -35,11 +35,65 @@
 	}
 	&-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, 44px);
+		grid-template-columns: repeat(5, 48px);
 		gap: 8px;
 		justify-content: space-between;
 		&.justifyStart {
 			justify-content: flex-start;
+		}
+	}
+}
+
+@media (min-width: 376px) {
+	.ticket__field-grid {
+		grid-template-columns: repeat(6, 48px);
+	}
+}
+@media (min-width: 432px) {
+	.ticket__field-grid {
+		grid-template-columns: repeat(7, 48px);
+	}
+}
+@media (min-width: 488px) {
+	.ticket__field-grid {
+		grid-template-columns: repeat(8, 48px);
+	}
+}
+@media (min-width: 500px) {
+	.ticket__field {
+		gap: 24px;
+		&-header {
+			gap: 12px;
+		}
+		&-name {
+			font-size: 20px;
+			line-height: 24px;
+		}
+		&-check {
+			width: 24px;
+			height: 24px;
+		}
+		&-cross {
+			width: 24px;
+			height: 24px;
+		}
+		&-grid {
+			grid-template-columns: repeat(5, 64px);
+			gap: 16px;
+		}
+	}
+}
+@media (min-width: 560px) {
+	.ticket__field {
+		&-grid {
+			grid-template-columns: repeat(6, 64px);
+		}
+	}
+}
+@media (min-width: 640px) {
+	.ticket__field {
+		&-grid {
+			grid-template-columns: repeat(7, 64px);
 		}
 	}
 }

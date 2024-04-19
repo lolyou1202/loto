@@ -49,8 +49,6 @@ export const Field = ({
 						fieldNum={fieldNum}
 					/>
 				))}
-				{fieldNum === 'second' &&
-					[...Array(17)].map((_, index) => <div key={index}></div>)}
 			</div>
 		</div>
 	)

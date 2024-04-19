@@ -8,3 +8,15 @@
 		width: 100% !important;
 	}
 }
+
+@media (min-width: 500px) {
+	.ticket__functional {
+		gap: 24px;
+		&-random {
+			svg {
+				width: 32px;
+				height: 32px;
+			}
+		}
+	}
+}
