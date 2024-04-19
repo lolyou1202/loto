@@ -1,0 +1,10 @@
+.ticket__functional {
+	display: flex;
+	gap: 12px;
+	&-random {
+		flex-shrink: 0;
+	}
+	&-compare {
+		width: 100% !important;
+	}
+}

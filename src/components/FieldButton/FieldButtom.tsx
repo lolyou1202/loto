@@ -1,7 +1,6 @@
-import classNames from 'classnames'
 import { DefaultButton } from '../DefaultButton/DefaultButton'
-import { useAppDispatch } from '../../redux/hooks'
-import { setVariantCell } from '../../redux/slices/ticketSlice'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { clearFields, setVariantCell } from '../../redux/slices/ticketSlice'
 import { CellVariant, FieldNum } from '../../types/types'
 
 export const FieldButtom = ({
@@ -15,17 +14,19 @@ export const FieldButtom = ({
 	className?: string
 	fieldNum?: FieldNum
 }) => {
+	const gameStage = useAppSelector(state => state.ticket.gameStage)
+
 	const dispatch = useAppDispatch()
 
-	const defaultButtonClass = classNames(variant, className)
-
 	const handleClickButton = () => {
+		gameStage !== 'select' && dispatch(clearFields())
 		dispatch(setVariantCell({ index: index - 1, fieldNum }))
 	}
 
 	return (
 		<DefaultButton
-			className={defaultButtonClass}
+			variant={variant}
+			className={className}
 			handleClickButton={handleClickButton}
 		>
 			<p>{index}</p>

@@ -1,7 +1,22 @@
-import { Cross } from "../icons/Cross"
-import { Info } from "../icons/Info"
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { clearFields } from '../../redux/slices/ticketSlice'
+import { Cross } from '../icons/Cross'
+import { Info } from '../icons/Info'
+import './Header.style.scss'
 
 export const Header = () => {
+	const fieldState = useAppSelector(state => state.ticket.fieldsState)
+
+	const dispatch = useAppDispatch()
+
+	const isSelectedSomething =
+		fieldState.first.selectedCellsNum !== 0 ||
+		fieldState.second.selectedCellsNum !== 0
+
+	const handleClickCross = () => {
+		dispatch(clearFields())
+	}
+
 	return (
 		<div className='ticket__header'>
 			<div className='ticket__header-title'>
@@ -10,9 +25,14 @@ export const Header = () => {
 					<Info strokeWidth={1} />
 				</button>
 			</div>
-			<button className='ticket__header-cross'>
-				<Cross />
-			</button>
+			{isSelectedSomething && (
+				<button
+					className='ticket__header-cross'
+					onClick={handleClickCross}
+				>
+					<Cross />
+				</button>
+			)}
 		</div>
 	)
 }

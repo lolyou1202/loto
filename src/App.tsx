@@ -1,4 +1,5 @@
 import { Field } from './components/Field/Field'
+import { Functional } from './components/Functional/Functional'
 import { Header } from './components/Header/Header'
 import { useAppSelector } from './redux/hooks'
 
@@ -23,10 +24,7 @@ function App() {
 					fieldState={fieldState.second}
 				/>
 			</div>
-			{/*<div className='ticket__functional'>
-				<div className='ticket__functional-random'></div>
-				<div className='ticket__functional-play'></div>
-			</div>*/}
+			<Functional />
 		</div>
 	)
 }

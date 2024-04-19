@@ -5,7 +5,7 @@ import { FieldButtom } from '../FieldButton/FieldButtom'
 import { ProgressBar } from '../ProgressBar/ProgressBar'
 import { Check } from '../icons/Check'
 import { Cross } from '../icons/Cross'
-import { getSelectedCells } from '../../hooks/getSelectedCells'
+import './Field.style.scss'
 
 export const Field = ({
 	name,
@@ -16,29 +16,16 @@ export const Field = ({
 	fieldState: FieldState
 	fieldNum?: FieldNum
 }) => {
-	const selectedCells = getSelectedCells(fieldState)
+	const { cells, isCorrect, selectedCellsNum } = fieldState
 
-	//const checkClass = classNames('ticket__field-check', {
-	//	show:
-	//		(fieldNum === 'first' && selectedCells.length === 8) ||
-	//		(fieldNum === 'second' && selectedCells.length === 1),
-	//})
-
-	//const crossClass = classNames('ticket__field-cross', {
-	//	show:
-	//		(fieldNum === 'first' && selectedCells.length > 8) ||
-	//		(fieldNum === 'second' && selectedCells.length > 1),
-	//})
 	const checkClass = classNames('ticket__field-check', {
-		show: fieldState.isCorrect,
+		show: isCorrect,
 	})
 
 	const crossClass = classNames('ticket__field-cross', {
 		show:
-			(fieldNum === 'first' &&
-				!fieldState.isCorrect &&
-				selectedCells.length > 8) ||
-			(fieldNum === 'second' && !fieldState.isCorrect),
+			(fieldNum === 'first' && !isCorrect && selectedCellsNum > 8) ||
+			(fieldNum === 'second' && !isCorrect),
 	})
 
 	return (
@@ -49,12 +36,12 @@ export const Field = ({
 					<Check className={checkClass} />
 					<Cross className={crossClass} />
 				</div>
-				{fieldNum === 'first' && selectedCells.length < 8 && (
-					<ProgressBar progress={selectedCells.length} length={8} />
+				{fieldNum === 'first' && selectedCellsNum < 8 && (
+					<ProgressBar progress={selectedCellsNum} length={8} />
 				)}
 			</div>
 			<div className='ticket__field-grid'>
-				{fieldState.cells.map(cell => (
+				{cells.map(cell => (
 					<FieldButtom
 						key={cell.index}
 						index={cell.index}

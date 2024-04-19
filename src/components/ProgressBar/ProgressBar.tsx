@@ -1,3 +1,5 @@
+import './ProgressBar.style.scss'
+
 export const ProgressBar = ({
 	progress,
 	length,
